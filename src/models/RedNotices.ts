@@ -47,7 +47,7 @@ export interface RedNoticesQuery {
 /**
  * Represents a collection of Red Notices.
  */
-export type RedNoticesEntitiy = {
+export type RedNoticesEntity = {
   /**
    * The total number of Red Notices.
    */

@@ -1,7 +1,7 @@
 /**
  * Represents the Yellow Notice Detail Images.
  */
-export type YellowNoticeDetailImagesEntitiy = {
+export type YellowNoticeDetailImagesEntity = {
   /**
    * Contains embedded images.
    */

@@ -47,7 +47,7 @@ export interface YellowNoticesQuery {
 /**
  * Represents a collection of Yellow Notices.
  */
-export type YellowNoticesEntitiy = {
+export type YellowNoticesEntity = {
   /**
    * The total number of Yellow Notices.
    */

@@ -1,15 +1,15 @@
 import type { CancelablePromise } from "../core/CancelablePromise";
 import { OpenAPI } from "../core/OpenAPI";
 import { request as __request } from "../core/request";
-import { RedNoticeDetailImagesEntitiy } from "../models/RedNoticeDetailImages";
-import { RedNoticeDetailsEntitiy } from "../models/RedNoticeDetails";
-import type { RedNoticesEntitiy, RedNoticesQuery } from "../models/RedNotices";
-import { YellowNoticeDetailImagesEntitiy } from "../models/YellowNoticeDetailImages";
-import { YellowNoticeDetailsEntitiy } from "../models/YellowNoticeDetails";
-import { YellowNoticesEntitiy, YellowNoticesQuery } from "../models/YellowNotices";
+import { RedNoticeDetailImagesEntity } from "../models/RedNoticeDetailImages";
+import { RedNoticeDetailsEntity } from "../models/RedNoticeDetails";
+import type { RedNoticesEntity, RedNoticesQuery } from "../models/RedNotices";
+import { YellowNoticeDetailImagesEntity } from "../models/YellowNoticeDetailImages";
+import { YellowNoticeDetailsEntity } from "../models/YellowNoticeDetails";
+import { YellowNoticesEntity, YellowNoticesQuery } from "../models/YellowNotices";
 
 export class InterpolService {
-  public static getRedNotices(query?: RedNoticesQuery): CancelablePromise<RedNoticesEntitiy> {
+  public static getRedNotices(query?: RedNoticesQuery): CancelablePromise<RedNoticesEntity> {
     return __request(OpenAPI, {
       method: "GET",
       url: "/notices/v1/red",
@@ -17,7 +17,7 @@ export class InterpolService {
     });
   }
 
-  public static getRedNoticeDetails(noticeID: string): CancelablePromise<RedNoticeDetailsEntitiy> {
+  public static getRedNoticeDetails(noticeID: string): CancelablePromise<RedNoticeDetailsEntity> {
     return __request(OpenAPI, {
       method: "GET",
       url: "/notices/v1/red/{noticeID}",
@@ -29,7 +29,7 @@ export class InterpolService {
 
   public static getRedNoticeDetailImages(
     noticeID: string,
-  ): CancelablePromise<RedNoticeDetailImagesEntitiy> {
+  ): CancelablePromise<RedNoticeDetailImagesEntity> {
     return __request(OpenAPI, {
       method: "GET",
       url: "/notices/v1/red/{noticeID}/images",
@@ -41,7 +41,7 @@ export class InterpolService {
 
   public static getYellowNotices(
     query?: YellowNoticesQuery,
-  ): CancelablePromise<YellowNoticesEntitiy> {
+  ): CancelablePromise<YellowNoticesEntity> {
     return __request(OpenAPI, {
       method: "GET",
       url: "/notices/v1/yellow",
@@ -51,7 +51,7 @@ export class InterpolService {
 
   public static getYellowNoticeDetails(
     noticeID: string,
-  ): CancelablePromise<YellowNoticeDetailsEntitiy> {
+  ): CancelablePromise<YellowNoticeDetailsEntity> {
     return __request(OpenAPI, {
       method: "GET",
       url: "/notices/v1/yellow/{noticeID}",
@@ -63,7 +63,7 @@ export class InterpolService {
 
   public static getYellowNoticeDetailImages(
     noticeID: string,
-  ): CancelablePromise<YellowNoticeDetailImagesEntitiy> {
+  ): CancelablePromise<YellowNoticeDetailImagesEntity> {
     return __request(OpenAPI, {
       method: "GET",
       url: "/notices/v1/yellow/{noticeID}/images",

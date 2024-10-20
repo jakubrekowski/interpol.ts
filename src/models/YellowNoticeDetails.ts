@@ -1,7 +1,7 @@
 /**
  * Represents the details of a Yellow Notice entity.
  */
-export type YellowNoticeDetailsEntitiy = {
+export type YellowNoticeDetailsEntity = {
   /**
    * The country associated with the entity. Two digit country code.
    */
