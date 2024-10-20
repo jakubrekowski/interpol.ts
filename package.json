@@ -1,0 +1,24 @@
+{
+  "name": "interpol.ts",
+  "version": "0.0.1",
+  "description": "Typescript wrapper for public Interpol Notices API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jakubrekowski/interpol.ts.git"
+  },
+  "keywords": [
+    "interpol",
+    "notices",
+    "api"
+  ],
+  "author": "Jakub Rekowski <jakub.rekowski@gmail.com> (https://github.com/jakubrekowski)",
+  "license": "SEE LICENSE IN license.md",
+  "bugs": {
+    "url": "https://github.com/jakubrekowski/interpol.ts/issues"
+  },
+  "homepage": "https://github.com/jakubrekowski/interpol.ts#readme"
+}
