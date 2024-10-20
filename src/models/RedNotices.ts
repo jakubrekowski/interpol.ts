@@ -73,6 +73,10 @@ export type RedNoticesEntitiy = {
        */
       nationalities: string[];
       /**
+       * The unique identifier for the entity.
+       */
+      entity_id: string;
+      /**
        * The first name of the subject of the Red Notice.
        */
       forename: string;
