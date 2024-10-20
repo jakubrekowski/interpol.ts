@@ -1,7 +1,7 @@
 /**
  * Represents the details of a Red Notice entity.
  */
-export type RedNoticeDetailsEntitiy = {
+export type RedNoticeDetailsEntity = {
   /**
    * List of arrest warrants associated with the entity.
    */

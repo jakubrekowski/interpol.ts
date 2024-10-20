@@ -1,7 +1,7 @@
 /**
- * Represents the Red Notice Detail Images.
+ * Represents the Yellow Notice Detail Images.
  */
-export type RedNoticeDetailImagesEntity = {
+export type YellowNoticeDetailImagesEntity = {
   /**
    * Contains embedded images.
    */
@@ -28,11 +28,11 @@ export type RedNoticeDetailImagesEntity = {
     }[];
   };
   /**
-   * Links related to the red notice.
+   * Links related to the yellow notice.
    */
   _links: {
     /**
-     * Link to the red notice detail images.
+     * Link to the yellow notice detail images.
      */
     self: {
       href: string;

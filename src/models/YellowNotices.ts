@@ -1,7 +1,7 @@
 /**
- * Represents a query for red notices.
+ * Represents a query for Yellow Notices.
  */
-export interface RedNoticesQuery {
+export interface YellowNoticesQuery {
   /**
    * The first name of the individual.
    */
@@ -45,23 +45,23 @@ export interface RedNoticesQuery {
 }
 
 /**
- * Represents a collection of Red Notices.
+ * Represents a collection of Yellow Notices.
  */
-export type RedNoticesEntity = {
+export type YellowNoticesEntity = {
   /**
-   * The total number of Red Notices.
+   * The total number of Yellow Notices.
    */
   total: number;
   /**
-   * The query used to retrieve the Red Notices.
+   * The query used to retrieve the Yellow Notices.
    */
-  query: RedNoticesQuery;
+  query: YellowNoticesQuery;
   /**
-   * The embedded Red Notices.
+   * The embedded Yellow Notices.
    */
   _embedded: {
     /**
-     * An array of Red Notices.
+     * An array of Yellow Notices.
      */
     notices: {
       /**
@@ -123,7 +123,7 @@ export type RedNoticesEntity = {
    */
   _links: {
     /**
-     * Link to the current page of Red Notices.
+     * Link to the current page of Yellow Notices.
      */
     self: {
       /**
@@ -132,7 +132,7 @@ export type RedNoticesEntity = {
       href: string;
     };
     /**
-     * Link to the first page of Red Notices.
+     * Link to the first page of Yellow Notices.
      */
     first: {
       /**
@@ -141,7 +141,7 @@ export type RedNoticesEntity = {
       href: string;
     };
     /**
-     * Link to the previous page of Red Notices.
+     * Link to the previous page of Yellow Notices.
      */
     previous?: {
       /**
@@ -150,7 +150,7 @@ export type RedNoticesEntity = {
       href: string;
     };
     /**
-     * Link to the next page of Red Notices.
+     * Link to the next page of Yellow Notices.
      */
     next?: {
       /**
@@ -159,7 +159,7 @@ export type RedNoticesEntity = {
       href: string;
     };
     /**
-     * Link to the last page of Red Notices.
+     * Link to the last page of Yellow Notices.
      */
     last: {
       /**

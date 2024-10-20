@@ -6,7 +6,7 @@
   <img src="./assets/un_notice.svg" height="150px" alt="UN Notice" />
 </a>
 
-A TypeScript library for easily interacting with the Interpol public Notices API. This library provides a convenient, type-safe way to access data on Red, Yellow, and possibly in the future, other Interpol notices.
+A TypeScript library for easily interacting with the Interpol public Notices API. This library provides a convenient, type-safe way to access data on Red, Yellow Interpol notices, and INTERPOL-United Nations Security Council Special Notices.
 
 ## Contents
 
@@ -66,22 +66,22 @@ It is important to note that Interpol notices are not international arrest warra
 
 ## Development Status
 
-Currently, this library focuses on retrieving and interacting with **Red Notices**. Support for **Yellow** and **UN Notices** is planned for future releases but is not yet implemented. Contributions are welcome to accelerate the development of these features!
+This library currently supports retrieving and interacting with **Red Notices** and **Yellow Notices**. Support for **INTERPOL-United Nations Security Council Special Notices** is planned for future releases but is not yet implemented. Contributions are welcome to accelerate the development of these features!
 
 You can track the progress of these planned features in the project's issue tracker. We encourage community involvement in prioritizing and implementing support for additional notice types.
 
 ## Installation
 
 ```bash
-npm install @jakubrekowski/interpol.ts
+npm install interpol.ts
 # or
-yarn add @jakubrekowski/interpol.ts
+yarn add interpol.ts
 ```
 
 ## Usage
 
 ```typescript
-import { InterpolService } from "@jakubrekowski/interpol.ts";
+import { InterpolService } from "interpol.ts";
 
 async function getRedNotices() {
   try {
@@ -146,26 +146,47 @@ cancelRedNoticeRequest();
 
 ## API Reference
 
-### `InterpolService.getRedNotices(query?: RedNoticesQuery): CancelablePromise<RedNoticesEntitiy>`
+### `InterpolService.getRedNotices(query?: RedNoticesQuery): CancelablePromise<RedNoticesEntity>`
 
 Retrieves a list of Red Notices.
 
 - **`query`**: Optional query parameters to filter the results (see `RedNoticesQuery` interface below).
-- **Returns**: A `CancelablePromise` that resolves to a `RedNoticesEntitiy` object.
+- **Returns**: A `CancelablePromise` that resolves to a `RedNoticesEntity` object.
 
-### `InterpolService.getRedNoticeDetails(noticeID: string): CancelablePromise<RedNoticeDetailsEntitiy>`
+### `InterpolService.getRedNoticeDetails(noticeID: string): CancelablePromise<RedNoticeDetailsEntity>`
 
 Retrieves details for a specific Red Notice.
 
 - **`noticeID`**: The ID of the Red Notice.
-- **Returns**: A `CancelablePromise` that resolves to a `RedNoticeDetailsEntitiy` object.
+- **Returns**: A `CancelablePromise` that resolves to a `RedNoticeDetailsEntity` object.
 
-### `InterpolService.getRedNoticeDetailImages(noticeID: string): CancelablePromise<RedNoticeDetailImagesEntitiy>`
+### `InterpolService.getRedNoticeDetailImages(noticeID: string): CancelablePromise<RedNoticeDetailImagesEntity>`
 
 Retrieves images for a specific Red Notice.
 
 - **`noticeID`**: The ID of the Red Notice.
-- **Returns**: A `CancelablePromise` that resolves to a `RedNoticeDetailImagesEntitiy` object.
+- **Returns**: A `CancelablePromise` that resolves to a `RedNoticeDetailImagesEntity` object.
+
+### `InterpolService.getYellowNotices(query?: YellowNoticesQuery): CancelablePromise<YellowNoticesEntity>`
+
+Retrieves a list of Yellow Notices.
+
+- **`query`**: Optional query parameters to filter the results (see `YellowNoticesQuery` interface below).
+- **Returns**: A `CancelablePromise` that resolves to a `YellowNoticesEntity` object.
+
+### `InterpolService.getYellowNoticeDetails(noticeID: string): CancelablePromise<YellowNoticeDetailsEntity>`
+
+Retrieves details for a specific Yellow Notice.
+
+- **`noticeID`**: The ID of the Yellow Notice.
+- **Returns**: A `CancelablePromise` that resolves to a `YellowNoticeDetailsEntity` object.
+
+### `InterpolService.getYellowNoticeDetailImages(noticeID: string): CancelablePromise<YellowNoticeDetailImagesEntity>`
+
+Retrieves images for a specific Yellow Notice.
+
+- **`noticeID`**: The ID of the Yellow Notice.
+- **Returns**: A `CancelablePromise` that resolves to a `YellowNoticeDetailImagesEntity` object.
 
 ### `RedNoticesQuery` Interface
 
@@ -180,7 +201,23 @@ interface RedNoticesQuery {
   sexId?: "F" | "M" | "U"; // Sex ID
   arrestWarrantCountryId?: string; // Country ID of arrest warrant (two-digit country code)
   page?: number; // Page number for pagination
-  resultPerPage?: number; // Number of results per page
+  resultPerPage?: number; // Number of results per page; maximum is 160
+}
+```
+
+### `YellowNoticesQuery` Interface
+
+```typescript
+interface YellowNoticesQuery {
+  forename?: string; // First name
+  name?: string; // Last name
+  nationality?: string; // Nationality (two-digit country code)
+  ageMax?: number; // Maximum age
+  ageMin?: number; // Minimum age
+  freeText?: string; // Free text search
+  sexId?: "F" | "M" | "U"; // Sex ID
+  page?: number; // Page number for pagination
+  resultPerPage?: number; // Number of results per page; maximum is 160
 }
 ```
 
