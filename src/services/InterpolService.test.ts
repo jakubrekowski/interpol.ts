@@ -38,9 +38,7 @@ describe("InterpolService", () => {
     });
 
     it("should throw an error when API call fails by providing an invalid notice ID", async () => {
-      await expect(
-        InterpolService.getRedNoticeDetails("invalid-notice-id")
-      ).rejects.toThrow();
+      await expect(InterpolService.getRedNoticeDetails("invalid-notice-id")).rejects.toThrow();
     });
   });
 
@@ -54,9 +52,7 @@ describe("InterpolService", () => {
     });
 
     it("should throw an error when API call fails by providing an invalid notice ID", async () => {
-      await expect(
-        InterpolService.getRedNoticeDetails("invalid-notice-id")
-      ).rejects.toThrow();
+      await expect(InterpolService.getRedNoticeDetails("invalid-notice-id")).rejects.toThrow();
     });
   });
 });
