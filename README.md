@@ -73,15 +73,15 @@ You can track the progress of these planned features in the project's issue trac
 ## Installation
 
 ```bash
-npm install @jakubrekowski/interpol.ts
+npm install interpol.ts
 # or
-yarn add @jakubrekowski/interpol.ts
+yarn add interpol.ts
 ```
 
 ## Usage
 
 ```typescript
-import { InterpolService } from "@jakubrekowski/interpol.ts";
+import { InterpolService } from "interpol.ts";
 
 async function getRedNotices() {
   try {
