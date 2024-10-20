@@ -2,9 +2,15 @@
   "name": "interpol.ts",
   "version": "0.0.1",
   "description": "Typescript wrapper for public Interpol Notices API",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "/dist"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky"
   },
   "repository": {
     "type": "git",
@@ -20,5 +26,10 @@
   "bugs": {
     "url": "https://github.com/jakubrekowski/interpol.ts/issues"
   },
-  "homepage": "https://github.com/jakubrekowski/interpol.ts#readme"
+  "homepage": "https://github.com/jakubrekowski/interpol.ts#readme",
+  "devDependencies": {
+    "@commitlint/cli": "^19.5.0",
+    "@commitlint/config-conventional": "^19.5.0",
+    "husky": "^9.1.6"
+  }
 }
