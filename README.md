@@ -1,8 +1,10 @@
 # Interpol.ts
 
-<img src="./assets/red_notice.svg" height="150px" /> 
-<img src="./assets/yellow_notice.svg" height="150px" /> 
-<img src="./assets/un_notice.svg" height="150px" />
+<a href="https://interpol.int/en/How-we-work/Notices" align="center">
+  <img src="./assets/red_notice.svg" height="150px" alt="Red Notice" /> 
+  <img src="./assets/yellow_notice.svg" height="150px" alt="Yellow Notice" /> 
+  <img src="./assets/un_notice.svg" height="150px" alt="UN Notice" />
+</a>
 
 A TypeScript library for easily interacting with the Interpol public Notices API. This library provides a convenient, type-safe way to access data on Red, Yellow, and possibly in the future, other Interpol notices.
 
