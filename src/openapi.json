@@ -1,0 +1,1425 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "description": "Interpol Red, Yellow and UN Notices API",
+    "version": "1.0.2",
+    "title": "Interpol Notices API"
+  },
+  "servers": [
+    {
+      "url": "https://ws-public.interpol.int"
+    }
+  ],
+  "paths": {
+    "/notices/v1/red": {
+      "get": {
+        "summary": "Get Red Notices",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RedNotices"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "in": "query",
+            "required": false,
+            "name": "forename",
+            "schema": {
+              "type": "string"
+            },
+            "description": "First name",
+            "example": "MAX"
+          },
+          {
+            "in": "query",
+            "required": false,
+            "name": "name",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Last name",
+            "example": "Mustermann"
+          },
+          {
+            "in": "query",
+            "required": false,
+            "name": "nationality",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Two digit country code",
+            "example": "DE"
+          },
+          {
+            "in": "query",
+            "required": false,
+            "name": "ageMax",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "maximum age",
+            "example": 120
+          },
+          {
+            "in": "query",
+            "required": false,
+            "name": "ageMin",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "minimum age",
+            "example": 18
+          },
+          {
+            "in": "query",
+            "required": false,
+            "name": "freeText",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Free text query",
+            "example": ""
+          },
+          {
+            "in": "query",
+            "required": false,
+            "name": "sexId",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "",
+                "F",
+                "M",
+                "U"
+              ]
+            },
+            "description": "Free text query",
+            "example": "F"
+          },
+          {
+            "in": "query",
+            "required": false,
+            "name": "arrestWarrantCountryId",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Two digit country code",
+            "example": "DE"
+          },
+          {
+            "in": "query",
+            "required": false,
+            "name": "page",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "pagination - starts with 1",
+            "example": 1
+          },
+          {
+            "in": "query",
+            "required": false,
+            "name": "resultPerPage",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "resultPerPage",
+            "example": 200
+          }
+        ]
+      }
+    },
+    "/notices/v1/red/{noticeID}": {
+      "get": {
+        "summary": "Get Red Notice Details",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RedNoticeDetail"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "in": "path",
+            "required": true,
+            "name": "noticeID",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Notice ID",
+            "example": "1993-27493"
+          }
+        ]
+      }
+    },
+    "/notices/v1/red/{noticeID}/images": {
+      "get": {
+        "summary": "Get Red Notice Images",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RedNoticeDetailImages"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "in": "path",
+            "required": true,
+            "name": "noticeID",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Notice ID",
+            "example": "1993-27493"
+          }
+        ]
+      }
+    },
+    "/notices/v1/yellow": {
+      "get": {
+        "summary": "Get Yellow Notices",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/YellowNotices"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "in": "query",
+            "required": false,
+            "name": "forename",
+            "schema": {
+              "type": "string"
+            },
+            "description": "First name",
+            "example": "MAX"
+          },
+          {
+            "in": "query",
+            "required": false,
+            "name": "name",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Last name",
+            "example": "Mustermann"
+          },
+          {
+            "in": "query",
+            "required": false,
+            "name": "nationality",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Two digit country code",
+            "example": "DE"
+          },
+          {
+            "in": "query",
+            "required": false,
+            "name": "ageMax",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "maximum age",
+            "example": 120
+          },
+          {
+            "in": "query",
+            "required": false,
+            "name": "ageMin",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "minimum age",
+            "example": 18
+          },
+          {
+            "in": "query",
+            "required": false,
+            "name": "freeText",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Free text query",
+            "example": ""
+          },
+          {
+            "in": "query",
+            "required": false,
+            "name": "sexId",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "",
+                "F",
+                "M",
+                "U"
+              ]
+            },
+            "description": "Free text query",
+            "example": "F"
+          },
+          {
+            "in": "query",
+            "required": false,
+            "name": "page",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "pagination - starts with 1",
+            "example": 1
+          },
+          {
+            "in": "query",
+            "required": false,
+            "name": "resultPerPage",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "resultPerPage",
+            "example": 200
+          }
+        ]
+      }
+    },
+    "/notices/v1/yellow/{noticeID}": {
+      "get": {
+        "summary": "Get Yellow Notice Details",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/YellowNoticeDetail"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "in": "path",
+            "required": true,
+            "name": "noticeID",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Notice ID",
+            "example": "2014-5590"
+          }
+        ]
+      }
+    },
+    "/notices/v1/yellow/{noticeID}/images": {
+      "get": {
+        "summary": "Get Yellow Notice Images",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/YellowNoticeDetailImages"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "in": "path",
+            "required": true,
+            "name": "noticeID",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Notice ID",
+            "example": "2014-5590"
+          }
+        ]
+      }
+    },
+    "/notices/v1/un": {
+      "get": {
+        "summary": "Get UN Notices",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UNNotices"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "in": "query",
+            "required": false,
+            "name": "name",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Last name",
+            "example": "Mustermann"
+          },
+          {
+            "in": "query",
+            "required": false,
+            "name": "unReference",
+            "schema": {
+              "type": "string"
+            },
+            "description": "UN-Referenz"
+          },
+          {
+            "in": "query",
+            "required": false,
+            "name": "unResolution",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "UN-Resolution",
+            "example": 1267
+          },
+          {
+            "in": "query",
+            "required": false,
+            "name": "page",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "pagination - starts with 1",
+            "example": 1
+          },
+          {
+            "in": "query",
+            "required": false,
+            "name": "resultPerPage",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "resultPerPage",
+            "example": 200
+          }
+        ]
+      }
+    },
+    "/notices/v1/un/{noticeType}/{noticeID}": {
+      "get": {
+        "summary": "Get UN Notice Details",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/YellowNoticeDetail"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "in": "path",
+            "required": true,
+            "name": "noticeID",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Notice ID",
+            "example": "2014-5590"
+          },
+          {
+            "in": "path",
+            "required": true,
+            "name": "noticeType",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Notice Type (either 'persons' or 'entities')",
+            "example": "persons"
+          }
+        ]
+      }
+    },
+    "/notices/v1/un/{noticeType}/{noticeID}/images": {
+      "get": {
+        "summary": "Get UN Notice Images",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UNNoticeDetailImages"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "in": "path",
+            "required": true,
+            "name": "noticeID",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Notice ID",
+            "example": "2014-5590"
+          },
+          {
+            "in": "path",
+            "required": true,
+            "name": "noticeType",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Notice Type (either 'persons' or 'entities')",
+            "example": "persons"
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "RedNoticeDetailImages": {
+        "type": "object",
+        "properties": {
+          "_embedded": {
+            "type": "object",
+            "properties": {
+              "images": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "picture_id": {
+                      "type": "string",
+                      "example": "52558228"
+                    },
+                    "_links": {
+                      "type": "object",
+                      "properties": {
+                        "self": {
+                          "type": "object",
+                          "properties": {
+                            "href": {
+                              "type": "string",
+                              "example": "https://ws-public.interpol.int/notices/v1/red/1993-27493/images/52558228"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "_links": {
+            "type": "object",
+            "properties": {
+              "self": {
+                "type": "object",
+                "properties": {
+                  "href": {
+                    "type": "string",
+                    "example": "https://ws-public.interpol.int/notices/v1/red/1993-27493/images"
+                  }
+                }
+              },
+              "notice": {
+                "type": "object",
+                "properties": {
+                  "href": {
+                    "type": "string",
+                    "example": "https://ws-public.interpol.int/notices/v1/red/1993-27493"
+                  }
+                }
+              },
+              "thumbnail": {
+                "type": "object",
+                "properties": {
+                  "href": {
+                    "type": "string",
+                    "example": "https://ws-public.interpol.int/notices/v1/red/1993-27493/images/59558401"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "RedNoticeDetail": {
+        "type": "object",
+        "properties": {
+          "arrest_warrants": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "issuing_country_id": {
+                  "type": "string",
+                  "example": "DE"
+                },
+                "charge": {
+                  "type": "string",
+                  "example": "Attempted murder coinciding with attempted jointly committed aggravated robbery and kidnapping for ransom coinciding with aggravated robbery and aggravated robbery coinciding with attempted aggravated extortionate assault especially aggravated robbery aggravated robbery in penal cumulation with attempted arson and aggravated robbery"
+                },
+                "charge_translation": {
+                  "type": "string",
+                  "format": "nullable"
+                }
+              }
+            }
+          },
+          "weight": {
+            "type": "integer",
+            "format": "int32",
+            "example": 63
+          },
+          "forename": {
+            "type": "string",
+            "example": "DANIELA MARIE LUISE"
+          },
+          "date_of_birth": {
+            "type": "string",
+            "example": "1958/11/05"
+          },
+          "entity_id": {
+            "type": "string",
+            "example": "1993/27493"
+          },
+          "languages_spoken_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "example": "GER"
+            }
+          },
+          "nationalities": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "example": "DE"
+            }
+          },
+          "height": {
+            "type": "number",
+            "example": 1.65
+          },
+          "sex_id": {
+            "type": "string",
+            "example": "F"
+          },
+          "country_of_birth_id": {
+            "type": "string",
+            "example": "DE"
+          },
+          "name": {
+            "type": "string",
+            "example": "KLETTE"
+          },
+          "distinguishing_marks": {
+            "type": "string",
+            "example": "Birthmarks in the face"
+          },
+          "eyes_colors_id": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "example": "BRO"
+            }
+          },
+          "hairs_id": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "example": "BLA"
+            }
+          },
+          "place_of_birth": {
+            "type": "string",
+            "example": "KARLSRUHE"
+          },
+          "_embedded": {
+            "type": "object",
+            "properties": {
+              "links": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "_links": {
+            "type": "object",
+            "properties": {
+              "self": {
+                "type": "object",
+                "properties": {
+                  "href": {
+                    "type": "string",
+                    "example": "https://ws-public.interpol.int/notices/v1/red/1993-27493"
+                  }
+                }
+              },
+              "images": {
+                "type": "object",
+                "properties": {
+                  "href": {
+                    "type": "string",
+                    "example": "https://ws-public.interpol.int/notices/v1/red/1993-27493/images"
+                  }
+                }
+              },
+              "thumbnail": {
+                "type": "object",
+                "properties": {
+                  "href": {
+                    "type": "string",
+                    "example": "https://ws-public.interpol.int/notices/v1/red/1993-27493/images/59558401"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "RedNotices": {
+        "type": "object",
+        "properties": {
+          "total": {
+            "type": "integer",
+            "format": "int32",
+            "example": 0
+          },
+          "query": {
+            "type": "object",
+            "properties": {
+              "page": {
+                "type": "integer",
+                "format": "int32",
+                "example": 1
+              },
+              "resultPerPage": {
+                "type": "integer",
+                "format": "int32",
+                "example": 160
+              }
+            }
+          },
+          "_embedded": {
+            "type": "object",
+            "properties": {
+              "notices": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "_links": {
+            "type": "object",
+            "properties": {
+              "self": {
+                "type": "object",
+                "properties": {
+                  "href": {
+                    "type": "string",
+                    "example": "https://ws-public.interpol.int/notices/v1/red?nationality=DE&resultPerPage=160&page=1"
+                  }
+                }
+              },
+              "first": {
+                "type": "object",
+                "properties": {
+                  "href": {
+                    "type": "string",
+                    "example": "https://ws-public.interpol.int/notices/v1/red?nationality=DE&resultPerPage=160&page=1"
+                  }
+                }
+              },
+              "next": {
+                "type": "object",
+                "properties": {
+                  "href": {
+                    "type": "string",
+                    "example": "https://ws-public.interpol.int/notices/v1/red?nationality=DE&resultPerPage=160&page=2"
+                  }
+                }
+              },
+              "last": {
+                "type": "object",
+                "properties": {
+                  "href": {
+                    "type": "string",
+                    "example": "https://ws-public.interpol.int/notices/v1/red?nationality=DE&resultPerPage=160&page=8"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "YellowNoticeDetailImages": {
+        "type": "object",
+        "properties": {
+          "_embedded": {
+            "type": "object",
+            "properties": {
+              "images": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "picture_id": {
+                      "type": "string",
+                      "example": "59410257"
+                    },
+                    "_links": {
+                      "type": "object",
+                      "properties": {
+                        "self": {
+                          "type": "object",
+                          "properties": {
+                            "href": {
+                              "type": "string",
+                              "example": "https://ws-public.interpol.int/notices/v1/yellow/2014-5590/images/59410257"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "_links": {
+            "type": "object",
+            "properties": {
+              "self": {
+                "type": "object",
+                "properties": {
+                  "href": {
+                    "type": "string",
+                    "example": "https://ws-public.interpol.int/notices/v1/yellow/2014-5590/images"
+                  }
+                }
+              },
+              "notice": {
+                "type": "object",
+                "properties": {
+                  "href": {
+                    "type": "string",
+                    "example": "https://ws-public.interpol.int/notices/v1/yellow/2014-5590"
+                  }
+                }
+              },
+              "thumbnail": {
+                "type": "object",
+                "properties": {
+                  "href": {
+                    "type": "string",
+                    "example": "https://ws-public.interpol.int/notices/v1/yellow/2014-5590/images/59410257"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "YellowNoticeDetail": {
+        "type": "object",
+        "properties": {
+          "weight": {
+            "type": "integer",
+            "format": "int32",
+            "example": 63
+          },
+          "birth_name": {
+            "type": "string"
+          },
+          "entity_id": {
+            "type": "string",
+            "example": "2022/9888"
+          },
+          "nationalities": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "example": "DE"
+            }
+          },
+          "height": {
+            "type": "number",
+            "example": 1.65
+          },
+          "name": {
+            "type": "string",
+            "example": "MAX"
+          },
+          "eyes_colors_id": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "example": "BRO"
+            }
+          },
+          "place": {
+            "type": "string",
+            "example": "KARLSRUHE"
+          },
+          "date_of_event": {
+            "type": "string",
+            "example": "2021/02/01"
+          },
+          "hairs_id": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "example": "BLA"
+            }
+          },
+          "father_forename": {
+            "type": "string",
+            "example": "MAX"
+          },
+          "mother_forename": {
+            "type": "string",
+            "example": "PAULA"
+          },
+          "forename": {
+            "type": "string",
+            "example": "MAX"
+          },
+          "date_of_birth": {
+            "type": "string",
+            "example": "1958/11/05"
+          },
+          "languages_spoken_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "example": "GER"
+            }
+          },
+          "country": {
+            "type": "string",
+            "example": "DE"
+          },
+          "country_of_birth_id": {
+            "type": "string",
+            "example": "DE"
+          },
+          "sex_id": {
+            "type": "string",
+            "example": "F"
+          },
+          "distinguishing_marks": {
+            "type": "string",
+            "example": "Birthmarks in the face"
+          },
+          "mother_name": {
+            "type": "string",
+            "example": "MUSTERMANN"
+          },
+          "place_of_birth": {
+            "type": "string",
+            "example": "KARLSRUHE"
+          },
+          "_embedded": {
+            "type": "object",
+            "properties": {
+              "links": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "_links": {
+            "type": "object",
+            "properties": {
+              "self": {
+                "type": "object",
+                "properties": {
+                  "href": {
+                    "type": "string",
+                    "example": "https://ws-public.interpol.int/notices/v1/yellow/2022-9888"
+                  }
+                }
+              },
+              "images": {
+                "type": "object",
+                "properties": {
+                  "href": {
+                    "type": "string",
+                    "example": "https://ws-public.interpol.int/notices/v1/yellow/2022-9888/images"
+                  }
+                }
+              },
+              "thumbnail": {
+                "type": "object",
+                "properties": {
+                  "href": {
+                    "type": "string",
+                    "example": "https://ws-public.interpol.int/notices/v1/yellow/2022-9888/images/59558401"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "YellowNotices": {
+        "type": "object",
+        "properties": {
+          "total": {
+            "type": "integer",
+            "format": "int32",
+            "example": 0
+          },
+          "query": {
+            "type": "object",
+            "properties": {
+              "page": {
+                "type": "integer",
+                "format": "int32",
+                "example": 1
+              },
+              "resultPerPage": {
+                "type": "integer",
+                "format": "int32",
+                "example": 160
+              }
+            }
+          },
+          "_embedded": {
+            "type": "object",
+            "properties": {
+              "notices": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "_links": {
+            "type": "object",
+            "properties": {
+              "self": {
+                "type": "object",
+                "properties": {
+                  "href": {
+                    "type": "string",
+                    "example": "https://ws-public.interpol.int/notices/v1/yellow?nationality=DE&resultPerPage=160&page=1"
+                  }
+                }
+              },
+              "first": {
+                "type": "object",
+                "properties": {
+                  "href": {
+                    "type": "string",
+                    "example": "https://ws-public.interpol.int/notices/v1/yellow?nationality=DE&resultPerPage=160&page=1"
+                  }
+                }
+              },
+              "next": {
+                "type": "object",
+                "properties": {
+                  "href": {
+                    "type": "string",
+                    "example": "https://ws-public.interpol.int/notices/v1/yellow?nationality=DE&resultPerPage=160&page=2"
+                  }
+                }
+              },
+              "last": {
+                "type": "object",
+                "properties": {
+                  "href": {
+                    "type": "string",
+                    "example": "https://ws-public.interpol.int/notices/v1/yellow?nationality=DE&resultPerPage=160&page=8"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "UNNoticeDetailImages": {
+        "type": "object",
+        "properties": {
+          "_embedded": {
+            "type": "object",
+            "properties": {
+              "images": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "picture_id": {
+                      "type": "string",
+                      "example": "62323740"
+                    },
+                    "_links": {
+                      "type": "object",
+                      "properties": {
+                        "self": {
+                          "type": "object",
+                          "properties": {
+                            "href": {
+                              "type": "string",
+                              "example": "https://ws-public.interpol.int/notices/v1/un/2021-82522/images/62323740"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "_links": {
+            "type": "object",
+            "properties": {
+              "self": {
+                "type": "object",
+                "properties": {
+                  "href": {
+                    "type": "string",
+                    "example": "https://ws-public.interpol.int/notices/v1/un/persons/2021-82522/images"
+                  }
+                }
+              },
+              "notice": {
+                "type": "object",
+                "properties": {
+                  "href": {
+                    "type": "string",
+                    "example": "https://ws-public.interpol.int/notices/v1/un/persons/2021-82522"
+                  }
+                }
+              },
+              "thumbnail": {
+                "type": "object",
+                "properties": {
+                  "href": {
+                    "type": "string",
+                    "example": "https://ws-public.interpol.int/notices/v1/un/persons/2021-82522/images/62323740"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "UNNoticeDetail": {
+        "type": "object",
+        "properties": {
+          "summary": {
+            "type": "string"
+          },
+          "weight": {
+            "type": "integer",
+            "format": "int32",
+            "example": 63
+          },
+          "profession": {
+            "type": "string"
+          },
+          "purposes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "entity_id": {
+            "type": "string",
+            "example": "2021/84506"
+          },
+          "aliases": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "father_name": {
+            "type": "string"
+          },
+          "un_reference": {
+            "type": "string",
+            "example": "QDi.432"
+          },
+          "identity_documents": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "nationalities": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "example": "DE"
+            }
+          },
+          "name_at_birth": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string",
+            "example": "MAX"
+          },
+          "name_in_original_script": {
+            "type": "string"
+          },
+          "un_resolution": {
+            "type": "integer",
+            "example": 1267
+          },
+          "father_forename": {
+            "type": "string"
+          },
+          "mother_forename": {
+            "type": "string"
+          },
+          "forename": {
+            "type": "string"
+          },
+          "associates": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "date_of_birth": {
+            "type": "string",
+            "example": "1958/11/05"
+          },
+          "un_reference_date": {
+            "type": "string",
+            "example": "2021/12/29"
+          },
+          "forename_in_original_script": {
+            "type": "string"
+          },
+          "languages_spoken_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "example": "GER"
+            }
+          },
+          "country_of_birth_id": {
+            "type": "string",
+            "example": "DE"
+          },
+          "sex_id": {
+            "type": "string",
+            "example": "M"
+          },
+          "mother_name": {
+            "type": "string"
+          },
+          "adresses": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "place_of_birth": {
+            "type": "string",
+            "example": "KARLSRUHE"
+          },
+          "main_activity": {
+            "type": "string",
+            "example": "Associated with Islamic State in Iraq and the Levant"
+          },
+          "from_chamber_of_commerce": {
+            "type": "string"
+          },
+          "legal_form": {
+            "type": "string"
+          },
+          "administrators": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "additional_information": {
+            "type": "string"
+          },
+          "registration_number": {
+            "type": "string"
+          },
+          "formerly_known_as": {
+            "type": "string"
+          },
+          "_embedded": {
+            "type": "object",
+            "properties": {
+              "links": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "_links": {
+            "type": "object",
+            "properties": {
+              "self": {
+                "type": "object",
+                "properties": {
+                  "href": {
+                    "type": "string",
+                    "example": "https://ws-public.interpol.int/notices/v1/un/persons/2021-84506"
+                  }
+                }
+              },
+              "images": {
+                "type": "object",
+                "properties": {
+                  "href": {
+                    "type": "string",
+                    "example": "https://ws-public.interpol.int/notices/v1/un/persons/2021-84506/images"
+                  }
+                }
+              },
+              "thumbnail": {
+                "type": "object",
+                "properties": {
+                  "href": {
+                    "type": "string",
+                    "example": "https://ws-public.interpol.int/notices/v1/un/persons/2021-82522/images/62323740"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "UNNotices": {
+        "type": "object",
+        "properties": {
+          "total": {
+            "type": "integer",
+            "format": "int32",
+            "example": 0
+          },
+          "query": {
+            "type": "object",
+            "properties": {
+              "page": {
+                "type": "integer",
+                "format": "int32",
+                "example": 1
+              },
+              "resultPerPage": {
+                "type": "integer",
+                "format": "int32",
+                "example": 160
+              }
+            }
+          },
+          "_embedded": {
+            "type": "object",
+            "properties": {
+              "notices": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "_links": {
+            "type": "object",
+            "properties": {
+              "self": {
+                "type": "object",
+                "properties": {
+                  "href": {
+                    "type": "string",
+                    "example": "https://ws-public.interpol.int/notices/v1/un?nationality=DE&resultPerPage=160&page=1"
+                  }
+                }
+              },
+              "first": {
+                "type": "object",
+                "properties": {
+                  "href": {
+                    "type": "string",
+                    "example": "https://ws-public.interpol.int/notices/v1/un?nationality=DE&resultPerPage=160&page=1"
+                  }
+                }
+              },
+              "next": {
+                "type": "object",
+                "properties": {
+                  "href": {
+                    "type": "string",
+                    "example": "https://ws-public.interpol.int/notices/v1/un?nationality=DE&resultPerPage=160&page=2"
+                  }
+                }
+              },
+              "last": {
+                "type": "object",
+                "properties": {
+                  "href": {
+                    "type": "string",
+                    "example": "https://ws-public.interpol.int/notices/v1/un?nationality=DE&resultPerPage=160&page=8"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
