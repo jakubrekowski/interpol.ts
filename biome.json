@@ -10,7 +10,7 @@
   "linter": {
     "enabled": true,
     "rules": { "recommended": false },
-    "ignore": ["dist"]
+    "ignore": ["dist", "./src/openapi.json"]
   },
   "overrides": [
     {

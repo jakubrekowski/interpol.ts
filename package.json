@@ -10,6 +10,7 @@
   "scripts": {
     "build": "tsc",
     "test": "jest",
+    "biome-check": "npx @biomejs/biome check src",
     "prepare": "husky"
   },
   "repository": {
@@ -28,6 +29,7 @@
   },
   "homepage": "https://github.com/jakubrekowski/interpol.ts#readme",
   "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
     "@commitlint/cli": "^19.5.0",
     "@commitlint/config-conventional": "^19.5.0",
     "@types/jest": "^29.5.13",
