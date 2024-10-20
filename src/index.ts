@@ -1,1 +1,1 @@
-export * from "./services/InterpolService";
+export { InterpolService } from "./services/InterpolService";
