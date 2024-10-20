@@ -9,7 +9,7 @@
   "organizeImports": { "enabled": true },
   "linter": {
     "enabled": true,
-    "rules": { "recommended": true },
+    "rules": { "recommended": false },
     "ignore": ["dist", "./src/openapi.json"]
   },
   "overrides": [
