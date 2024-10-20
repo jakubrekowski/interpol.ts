@@ -6,7 +6,7 @@ import type { OnCancel } from "./CancelablePromise";
 import type { OpenAPIConfig } from "./OpenAPI";
 
 export const isDefined = <T>(
-  value: T | null | undefined
+  value: T | null | undefined,
 ): value is Exclude<T, null | undefined> => {
   return value !== undefined && value !== null;
 };
@@ -98,9 +98,7 @@ const getUrl = (config: OpenAPIConfig, options: ApiRequestOptions): string => {
   return url;
 };
 
-export const getFormData = (
-  options: ApiRequestOptions
-): FormData | undefined => {
+export const getFormData = (options: ApiRequestOptions): FormData | undefined => {
   if (options.formData) {
     const formData = new FormData();
 
@@ -131,7 +129,7 @@ type Resolver<T> = (options: ApiRequestOptions) => Promise<T>;
 
 export const resolve = async <T>(
   options: ApiRequestOptions,
-  resolver?: T | Resolver<T>
+  resolver?: T | Resolver<T>,
 ): Promise<T | undefined> => {
   if (typeof resolver === "function") {
     return (resolver as Resolver<T>)(options);
@@ -141,7 +139,7 @@ export const resolve = async <T>(
 
 export const getHeaders = async (
   config: OpenAPIConfig,
-  options: ApiRequestOptions
+  options: ApiRequestOptions,
 ): Promise<Headers> => {
   const headers = Object.entries({
     Accept: "application/json",
@@ -153,7 +151,7 @@ export const getHeaders = async (
         ...headers,
         [key]: String(value),
       }),
-      {} as Record<string, string>
+      {} as Record<string, string>,
     );
 
   if (options.body !== undefined) {
@@ -175,11 +173,7 @@ export const getRequestBody = (options: ApiRequestOptions): any => {
   if (options.body !== undefined) {
     if (options.mediaType?.includes("/json")) {
       return JSON.stringify(options.body);
-    } else if (
-      isString(options.body) ||
-      isBlob(options.body) ||
-      isFormData(options.body)
-    ) {
+    } else if (isString(options.body) || isBlob(options.body) || isFormData(options.body)) {
       return options.body;
     } else {
       return JSON.stringify(options.body);
@@ -195,7 +189,7 @@ export const sendRequest = async (
   body: any,
   formData: FormData | undefined,
   headers: Headers,
-  onCancel: OnCancel
+  onCancel: OnCancel,
 ): Promise<Response> => {
   const controller = new AbortController();
 
@@ -213,7 +207,7 @@ export const sendRequest = async (
 
 export const getResponseHeader = (
   response: Response,
-  responseHeader?: string
+  responseHeader?: string,
 ): string | undefined => {
   if (responseHeader) {
     const content = response.headers.get(responseHeader);
@@ -230,9 +224,7 @@ export const getResponseBody = async (response: Response): Promise<any> => {
       const contentType = response.headers.get("Content-Type");
       if (contentType) {
         const jsonTypes = ["application/json", "application/problem+json"];
-        const isJSON = jsonTypes.some((type) =>
-          contentType.toLowerCase().startsWith(type)
-        );
+        const isJSON = jsonTypes.some((type) => contentType.toLowerCase().startsWith(type));
         if (isJSON) {
           return await response.json();
         } else {
@@ -246,10 +238,7 @@ export const getResponseBody = async (response: Response): Promise<any> => {
   return undefined;
 };
 
-export const catchErrorCodes = (
-  options: ApiRequestOptions,
-  result: ApiResult
-): void => {
+export const catchErrorCodes = (options: ApiRequestOptions, result: ApiResult): void => {
   const errors: Record<number, string> = {
     400: "Bad Request",
     401: "Unauthorized",
@@ -280,7 +269,7 @@ export const catchErrorCodes = (
     throw new ApiError(
       options,
       result,
-      `Generic Error: status: ${errorStatus}; status text: ${errorStatusText}; body: ${errorBody}`
+      `Generic Error: status: ${errorStatus}; status text: ${errorStatusText}; body: ${errorBody}`,
     );
   }
 };
@@ -294,7 +283,7 @@ export const catchErrorCodes = (
  */
 export const request = <T>(
   config: OpenAPIConfig,
-  options: ApiRequestOptions
+  options: ApiRequestOptions,
 ): CancelablePromise<T> => {
   return new CancelablePromise(async (resolve, reject, onCancel) => {
     try {
@@ -304,20 +293,9 @@ export const request = <T>(
       const headers = await getHeaders(config, options);
 
       if (!onCancel.isCancelled) {
-        const response = await sendRequest(
-          config,
-          options,
-          url,
-          body,
-          formData,
-          headers,
-          onCancel
-        );
+        const response = await sendRequest(config, options, url, body, formData, headers, onCancel);
         const responseBody = await getResponseBody(response);
-        const responseHeader = getResponseHeader(
-          response,
-          options.responseHeader
-        );
+        const responseHeader = getResponseHeader(response, options.responseHeader);
 
         const result: ApiResult = {
           url,
