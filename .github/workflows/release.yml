@@ -30,7 +30,7 @@ jobs:
           package-name: interpol.ts
           token: ${{ secrets.GITHUB_TOKEN }}
       - name: Publish to npm
-        if: steps.release.outcome == 'success' && steps.release.outputs.release_created == 'true'
+        if: ${{ steps.release.outcome == 'success' && steps.release.outputs.release_created == 'true' }}
         run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
